@@ -12,7 +12,7 @@ import android.widget.Button;
 import io.realm.Realm;
 import model.Game;
 
-public class MainActivity extends AppCompatActivity implements AddFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements AddFragment.OnFragmentInteractionListener, ViewGameListFragment.OnFragmentInteractionListener{
 
     private Realm realm;
     private Button addViewButton;
@@ -43,6 +43,19 @@ public class MainActivity extends AppCompatActivity implements AddFragment.OnFra
 
                 transaction.commit();
 
+            }
+        });
+        viewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+                ViewGameListFragment fragment = new ViewGameListFragment();
+                transaction.replace(R.id.container, fragment);
+
+                transaction.commit();
             }
         });
     }

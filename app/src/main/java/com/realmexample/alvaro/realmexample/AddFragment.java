@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import io.realm.Realm;
 import model.Game;
@@ -53,15 +54,30 @@ public class AddFragment extends Fragment {
                     @Override
                     public void execute(Realm realm) {
                         Game game = realm.createObject(Game.class);
-                        game.setId(getIncrementalId());
-                        game.setGenre(genreEdit.getText().toString());
-                        game.setName(nameEdit.getText().toString());
+                        setGameInformation(game);
+                        clearEditTexts();
                         game.setFinished(false);
-                        System.out.println("id: " + game.getId() + " name: " + game.getName() + " genre: " + game.getGenre() + " añadido.");
+                        displayAddedGameToast();
                     }
                 });
             }
         });
+    }
+
+    private void displayAddedGameToast() {
+        Toast.makeText(getActivity(), "Game added successfully!",
+                Toast.LENGTH_LONG).show();
+    }
+
+    private void setGameInformation(Game game) {
+        game.setId(getIncrementalId());
+        game.setGenre(genreEdit.getText().toString());
+        game.setName(nameEdit.getText().toString());
+    }
+
+    private void clearEditTexts() {
+        genreEdit.setText("");
+        nameEdit.setText("");
     }
 
     private int getIncrementalId() {

@@ -1,6 +1,7 @@
 package model;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Alvaro on 18/10/2016.
