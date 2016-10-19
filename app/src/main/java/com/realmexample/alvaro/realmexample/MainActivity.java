@@ -1,34 +1,55 @@
 package com.realmexample.alvaro.realmexample;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.net.Uri;
+//import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
 import io.realm.Realm;
 import model.Game;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AddFragment.OnFragmentInteractionListener {
 
     private Realm realm;
-    private TextView genreTv;
-    private TextView nameTv;
+    private Button addViewButton;
+    private Button viewButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initElements();
+        initListeners();
 
 
-        nameTv = (TextView) findViewById(R.id.nameTv);
-        genreTv = (TextView) findViewById(R.id.genreTv);
+    }
 
+    private void initListeners() {
 
-        Realm.init(this);
-        realm = Realm.getDefaultInstance();
-        addGame(realm);
+        addViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentManager fragmentManager = getFragmentManager();
+
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+                AddFragment fragment = new AddFragment();
+                transaction.replace(R.id.container, fragment);
+
+                transaction.commit();
+
+            }
+        });
+    }
+
+    private void initElements() {
+        addViewButton = (Button) findViewById(R.id.addGameButton);
+        viewButton = (Button) findViewById(R.id.viewAllGamesButton);
     }
 
     private void addGame(Realm realm) {
@@ -43,13 +64,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         final Game game = realm.where(Game.class).findFirst();
-        showStatus(game.getName(), game.getGenre());
     }
 
-    private void showStatus(String name, String genre) {
-        Log.i("TAG", name+ " "+genre);
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
-        nameTv.setText(name);
-        genreTv.setText(genre);
     }
 }

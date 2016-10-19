@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.realmexample.alvaro.realmexample.AddFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="9dp"
+        android:id="@+id/gameNameField"
+        android:hint="Insert the game name" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/gameNameField"
+        android:layout_alignLeft="@+id/gameNameField"
+        android:layout_alignStart="@+id/gameNameField"
+        android:layout_marginTop="20dp"
+        android:id="@+id/gameGenreField"
+        android:hint="Insert genre" />
+
+    <Button
+        android:text="Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameGenreField"
+        android:layout_alignLeft="@+id/gameGenreField"
+        android:layout_alignStart="@+id/gameGenreField"
+        android:layout_marginTop="26dp"
+        android:id="@+id/addGameFragmentButton" />
+</RelativeLayout>

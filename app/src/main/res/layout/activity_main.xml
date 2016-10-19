@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.realmexample.alvaro.realmexample.MainActivity"
-    >
+    tools:context="com.realmexample.alvaro.realmexample.MainActivity">
 
-    <TextView
-        android:text="Genre"
+    <Button
+        android:id="@+id/addGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/genreTv"
-        android:layout_weight="21.78" />
+        android:layout_weight="1"
+        android:text="Add new game"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp" />
 
-    <TextView
-        android:text="Name"
+    <Button
+        android:id="@+id/viewAllGamesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nameTv"
-        android:layout_weight="21.78" />
+        android:layout_weight="1"
+        android:text="View Games"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/addGameButton"
+        android:layout_alignRight="@+id/addGameButton"
+        android:layout_alignEnd="@+id/addGameButton"
+        android:id="@+id/container">
+
+    </FrameLayout>
+
+</RelativeLayout>
